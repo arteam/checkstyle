@@ -3122,4 +3122,11 @@
       </build>
     </profile>
   </profiles>
+
+  <distributionManagement>
+    <repository>
+      <id>GoEuro-Releases</id>
+      <url>http://nexus.goeuro.int/content/repositories/releases</url>
+    </repository>
+  </distributionManagement>
 </project>
