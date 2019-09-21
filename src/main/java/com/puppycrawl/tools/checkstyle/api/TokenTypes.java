@@ -3546,6 +3546,13 @@ public final class TokenTypes {
     public static final int YIELD =
             GeneratedJavaTokenTypes.LITERAL_yield;
 
+    /**
+     * The {@code text block} literal representing a string
+     * with preserved formatting.
+     */
+    public static final int TEXT_BLOCK_LITERAL =
+            GeneratedJavaTokenTypes.TEXT_BLOCK_LITERAL;
+
     /** Prevent instantiation. */
     private TokenTypes() {
     }

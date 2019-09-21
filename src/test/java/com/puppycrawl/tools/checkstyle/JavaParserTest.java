@@ -190,6 +190,14 @@ public class JavaParserTest extends AbstractModuleTestSupport {
         assertNotNull("Unable to parse a Java file with Java13 swith expressions", ast);
     }
 
+    @Test
+    public void testTextBlockDoesNotFail() throws Exception {
+        final String testFilename = "InputJavaParserTextBlockTest.java";
+        final DetailAST ast = JavaParser.parseFile(new File(getNonCompilablePath(testFilename)),
+                JavaParser.Options.WITHOUT_COMMENTS);
+        assertNotNull("Unable to parse a Java file with Java13 text blocks", ast);
+    }
+
     private static final class CountComments {
         private final List<String> lineComments = new ArrayList<>();
         private final List<String> blockComments = new ArrayList<>();

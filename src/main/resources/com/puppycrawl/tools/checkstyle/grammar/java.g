@@ -111,6 +111,7 @@ tokens {
     BLOCK_COMMENT_END;COMMENT_CONTENT;
 
     LITERAL_yield="yield";
+    TEXT_BLOCK_LITERAL;
 }
 
 {
@@ -1625,6 +1626,7 @@ constant
     |   NUM_DOUBLE
     |    CHAR_LITERAL
     |    STRING_LITERAL
+    |    TEXT_BLOCK_LITERAL
     ;
 
 lambdaExpression
@@ -1819,11 +1821,16 @@ CHAR_LITERAL
     :    '\'' ( ESC | ~'\'' ) '\''
     ;
 
+// Java 13 text block literals
+
+TEXT_BLOCK_LITERAL
+ : "\"\"\"" (options {greedy=false;} : .)* ~'\\' "\"\"\""
+ ;
+
 // string literals
 STRING_LITERAL
     :   '"' ( ESC | ~'"' )* '"'
     ;
-
 
 // escape sequence -- note that this is protected; it can only be called
 //   from another lexer rule -- it will not ever directly return a token to
