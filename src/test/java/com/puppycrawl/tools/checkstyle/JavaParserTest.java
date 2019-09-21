@@ -187,7 +187,7 @@ public class JavaParserTest extends AbstractModuleTestSupport {
         final String testFilename = "InputJavaParserSwitchExpressionTest.java";
         final DetailAST ast = JavaParser.parseFile(new File(getNonCompilablePath(testFilename)),
                 JavaParser.Options.WITHOUT_COMMENTS);
-        assertNotNull("Unable to parse a Java file with Java12 swith expressions", ast);
+        assertNotNull("Unable to parse a Java file with Java13 swith expressions", ast);
     }
 
     private static final class CountComments {

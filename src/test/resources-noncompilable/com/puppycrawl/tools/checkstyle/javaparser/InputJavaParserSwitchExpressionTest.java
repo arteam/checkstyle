@@ -1,7 +1,8 @@
-//non-compiled with javac: Compilable with Java12
+//non-compiled with javac: Compilable with Java13
 package com.puppycrawl.tools.checkstyle.javaparser;
 
 import java.util.EnumSet;
+import java.util.Set;
 
 public class InputJavaParserSwitchExpressionTest {
 
@@ -63,6 +64,7 @@ public class InputJavaParserSwitchExpressionTest {
         return switch (day) {
             case MON, TUE -> Math.addExact(0, 1);
             case WED -> Math.addExact(1, 1);
+            default -> Math.addExact(2, 2);
         };
     }
 
@@ -70,7 +72,7 @@ public class InputJavaParserSwitchExpressionTest {
         return switch (day) {
             case MON, TUE -> 0;
             case WED -> 1;
-            default -> break day.toString().length() > 5 ? 1 : 0;
+            default -> day.toString().length() > 5 ? 1 : 0;
         };
     }
 
@@ -78,15 +80,15 @@ public class InputJavaParserSwitchExpressionTest {
         return switch (day) {
             case MON, TUE -> {
                 int l = day.toString().length();
-                break Math.addExact(l, 0);
+                yield Math.addExact(l, 0);
             }
             case WED -> {
                 int l = day.toString().length();
-                break Math.addExact(l, 1);
+                yield Math.addExact(l, 1);
             }
             default -> {
                 int l = day.toString().length();
-                break Math.addExact(l, 2);
+                yield Math.addExact(l, 2);
             }
         };
     }
@@ -100,14 +102,14 @@ public class InputJavaParserSwitchExpressionTest {
         } % 2;
     }
 
-     int signArithmetic(Day day) {
-         return - switch (day) {
-             case MON, FRI, SUN -> 6;
-             case TUE -> 7;
-             case THU, SAT -> 8;
-             case WED -> 9;
-         };
-     }
+    int signArithmetic(Day day) {
+        return -switch (day) {
+            case MON, FRI, SUN -> 6;
+            case TUE -> 7;
+            case THU, SAT -> 8;
+            case WED -> 9;
+        };
+    }
 
     int usedOnBothSidesOfAriphmeticExpression(Day day) {
         return switch (day) {
@@ -120,6 +122,4 @@ public class InputJavaParserSwitchExpressionTest {
             default -> 5;
         };
     }
-
 }
-

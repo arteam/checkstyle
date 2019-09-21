@@ -109,6 +109,8 @@ tokens {
 
     //Support of java comments has been extended
     BLOCK_COMMENT_END;COMMENT_CONTENT;
+
+    LITERAL_yield="yield";
 }
 
 {
@@ -1076,8 +1078,7 @@ traditionalStatement
         |    "do"^ statement w:"while" {#w.setType(DO_WHILE);} LPAREN expression RPAREN SEMI
 
         // get out of a loop (or switch)
-        // Java12 extended the break statement to allow it to take an argument
-        |    "break"^ (expression)? SEMI
+        |    "break"^ (IDENT)? SEMI
 
         // do next iteration of a loop
         |    "continue"^ (IDENT)? SEMI
@@ -1098,6 +1099,9 @@ traditionalStatement
 
         // synchronize a statement
         |    "synchronized"^ LPAREN expression RPAREN compoundStatement
+
+        // Java13 Switch Expressions yield statement
+        |    "yield"^ expression SEMI
 
         // empty statement
         |    s:SEMI {#s.setType(EMPTY_STAT);}

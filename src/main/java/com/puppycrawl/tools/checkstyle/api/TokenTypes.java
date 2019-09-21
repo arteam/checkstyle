@@ -3540,6 +3540,12 @@ public final class TokenTypes {
     public static final int COMMENT_CONTENT =
             GeneratedJavaTokenTypes.COMMENT_CONTENT;
 
+    /**
+     * The {@code yield} keyword.
+     */
+    public static final int YIELD =
+            GeneratedJavaTokenTypes.LITERAL_yield;
+
     /** Prevent instantiation. */
     private TokenTypes() {
     }
