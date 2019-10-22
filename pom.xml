@@ -980,7 +980,7 @@
           <execution>
             <id>enforce-versions</id>
             <goals>
-              <goal>enforce</goal>
+              <!--<goal>enforce</goal>-->
             </goals>
             <configuration>
               <rules>
